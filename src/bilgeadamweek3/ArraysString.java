@@ -15,16 +15,26 @@ public class ArraysString {
 			"Kilis", "Osmaniye", "Düzce" };
 
 	public static void main(String[] args) {
-		// sehirBul();
-		// plakaEkle();
-		// plakaDon();
+//		 sehirBul();
+//		 plakaEkle();
+//		 plakaDon();
 
 //		for (int i = 0; i < iller.length; i++) {
 //			System.out.println(sesliHarfSil()[i]);
-//
 //		}
 
-		noktaEkle();
+//		for (int i = 0; i < iller.length; i++) {
+//			System.out.println(noktaEkle()[i]);
+//		}
+
+		System.out.println("=========== Odev9_1 ====================");
+
+		bIleBaslayanIller();
+
+		System.out.println("=========== Odev9_2 ====================");
+
+		aIkinciHarf();
+
 	}
 
 	private static void sehirBul() {
@@ -85,12 +95,15 @@ public class ArraysString {
 	private static String[] sesliHarfSil() {
 		String[] sesliString = { "a", "e", "ı", "i", "o", "ö", "u", "ü" };
 		String[] sessizHarfStrings = new String[iller.length];
+		for (int i = 0; i < iller.length; i++) {
+			sessizHarfStrings[i] = iller[i];
+		}
 
 		for (int i = 0; i < iller.length; i++) {
 
 			for (int j = 0; j < sesliString.length; j++) {
-				if (iller[i].contains(sesliString[j])) {
-					sessizHarfStrings[i] = iller[i].replace(sesliString[j], "");
+				if (sessizHarfStrings[i].contains(sesliString[j])) {
+					sessizHarfStrings[i] = sessizHarfStrings[i].replace(sesliString[j], "");
 				}
 			}
 		}
@@ -98,7 +111,8 @@ public class ArraysString {
 
 	}
 
-	private static void noktaEkle() {
+	private static String[] noktaEkle() {
+
 		String[] string = new String[iller.length];
 
 		for (int i = 0; i < iller.length; i++) {
@@ -107,8 +121,29 @@ public class ArraysString {
 			} else {
 				string[i] = sesliHarfSil()[i] + "...";
 			}
-			System.out.println(string[i]);
+		}
+
+		return string;
+	}
+
+	private static void bIleBaslayanIller() {
+
+		for (int i = 0; i < iller.length; i++) {
+			if (noktaEkle()[i].startsWith("B")) {
+				System.out.println((i + 1) + "-" + noktaEkle()[i].substring(0, 3));
+			}
 
 		}
 	}
+
+	private static void aIkinciHarf() {
+
+		for (int i = 0; i < iller.length; i++) {
+			if (iller[i].substring(1, 2).equals("a")) {
+				System.out.println(iller[i].substring(0, 3).toUpperCase());
+			}
+
+		}
+	}
+
 }
